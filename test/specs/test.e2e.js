@@ -17,36 +17,37 @@
 /*new test*/
 
 //Welcome practice.automationbro.com - BlueHost.com
-//http://practice.automationbro.com/
+//https://webdriver.io/
 
 describe('Home', () => {
     it('Open URL & assert title', async () => {
         // Open URL
-        await browser.url('https://www.bluehost.com/');
+        await browser.url('https://webdriver.io/');
 
-        //Assert title
-        await expect(browser).toHaveTitle('Web Hosting, Domain, & WordPress Provider | Bluehost');
+        // Assert title
+        await expect(browser).toHaveTitle('WebdriverIO · Next-gen browser and mobile automation test framework for Node.js | WebdriverIO');
     });
-});
 
-describe('Home', () => {
-    it('Open About & assert URL', async () => {
-        // Open About Page
-        await browser.url('https://www.bluehost.com/about');
+    it('Open Sponsor & assert URL', async () => {
+        // Open Sponsor Page
+        await browser.url('https://webdriver.io/docs/sponsor/');
 
-        //Assert URL
-        await expect(browser).toHaveUrl('https://www.bluehost.com/about');
+        // Assert URL
+        await expect(browser).toHaveUrl('https://webdriver.io/docs/sponsor/');
     });
 
     it('Click get started btn & assert url contains get-started text', async () => {
-        //given
+        // given
         const url = 'https://webdriver.io';
 
-        //when
+        // when
         await browser.url(url);
-        await $('a[href="/docs/gettingstarted"]').click()
+        await $('a[href="/docs/gettingstarted"]').click();
 
-        //then
+        // Take a screenshot after clicking "Get Started"
+        await browser.saveScreenshot('./screenshots/after_click.png');
+        await browser.pause(5000);
+        // then
         await expect(browser).toHaveUrl(expect.stringContaining('gettingstarted'));
     });
 });
